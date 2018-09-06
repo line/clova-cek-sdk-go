@@ -32,7 +32,7 @@ import (
 func main() {
 	ext := cek.NewExtension("com.example.my_extension")
 	http.HandleFunc("/callback", func(w http.ResponseWriter, r *http.Request) {
-		messagee, err := ext.ParseRequest(r)
+		message, err := ext.ParseRequest(r)
 		if err != nil {
 			log.Printf("invalid request")
 			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
@@ -40,7 +40,7 @@ func main() {
 		}
 
 		var response *cek.ResponseMessage
-		switch request := messagee.Request.(type) {
+		switch request := message.Request.(type) {
 		case *cek.IntentRequest:
 			switch request.Intent.Name {
 			case "Clova.GuideIntent":
