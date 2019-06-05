@@ -63,6 +63,19 @@ const (
 	RequestTypeSessionEnded RequestType = "SessionEndedRequest"
 )
 
+// SlotValueType type
+type SlotValueType string
+
+// SlotValueType constants
+const (
+	SlotValueTypeTime             SlotValueType = "TIME"
+	SlotValueTypeDate             SlotValueType = "DATE"
+	SlotValueTypeDateTime         SlotValueType = "DATETIME"
+	SlotValueTypeTimeInterval     SlotValueType = "TIME.INTERVAL"
+	SlotValueTypeDateInterval     SlotValueType = "DATE.INTERVAL"
+	SlotValueTypeDateTimeInterval SlotValueType = "DATETIME.INTERVAL"
+)
+
 // RequestMessage type
 type RequestMessage struct {
 	Context *Context `json:"context"`
@@ -202,8 +215,10 @@ type Intent struct {
 
 // Slot type
 type Slot struct {
-	Name  string `json:"name"`
-	Value string `json:"value"`
+	Name      string        `json:"name"`
+	Value     string        `json:"value"`
+	ValueType SlotValueType `json:"valueType,omitempty"`
+	Unit      string        `json:"unit,omitempty"`
 }
 
 // LaunchRequest type

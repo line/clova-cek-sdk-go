@@ -111,6 +111,16 @@ var testRequestBodies = []string{`{
         "pizzaType": {
           "name": "pizzaType",
           "value": "ペパロニ"
+        },
+        "when": {
+          "name": "when",
+          "value": "19:00:00/19:30:00",
+          "valueType": "TIME.INTERVAL"
+        },
+        "degree": {
+          "name": "degree",
+          "value": "67",
+          "unit": "°C"
         }
       }
     }
@@ -288,6 +298,16 @@ func TestParseRequest(t *testing.T) {
 						"pizzaType": {
 							Name:  "pizzaType",
 							Value: "ペパロニ",
+						},
+						"when": {
+							Name:      "when",
+							Value:     "19:00:00/19:30:00",
+							ValueType: cek.SlotValueTypeTimeInterval,
+						},
+						"degree": {
+							Name:  "degree",
+							Value: "67",
+							Unit:  "°C",
 						},
 					},
 				},
